@@ -1,14 +1,10 @@
-import "../config/env.js";
 import jwt from "jsonwebtoken";
 
 import UserModel from "../models/user.model.js";
 
-// // JWT SECRET SETUP
-// if (!process.env.JWT_SECRET) {
-//   throw new Error("JWT_SECRET environment variable is required but not set.");
-// }
 const jwtSecret = process.env.JWT_SECRET;
 
+/* REGISTER A NEW USER */
 const registerUser = async (req, res) => {
   try {
     const { email, password, name } = req.body;
@@ -70,6 +66,7 @@ const registerUser = async (req, res) => {
   }
 };
 
+/* LOGIN FOR EXISTING USER */
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;

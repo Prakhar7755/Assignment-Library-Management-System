@@ -1,5 +1,5 @@
 import BookModel from "../models/book.model.js";
-
+/* ADD A NEW BOOK */
 const addNewBook = async (req, res) => {
   try {
     const { title, author, isbn } = req.body;
@@ -16,8 +16,8 @@ const addNewBook = async (req, res) => {
     }
 
     const book = await BookModel.create({
-      title: title.toLowerCase().trim(),
-      author: author.toLowerCase().trim(),
+      title: title.trim(),
+      author: author.trim(),
       isbn: isbn.trim(),
     });
 
@@ -49,9 +49,10 @@ const addNewBook = async (req, res) => {
   }
 };
 
+/* GET ALL THE BOOKS */
 const getAllBooks = async (req, res) => {
   try {
-    const books = await BookModel.find({ isAvailable: true }).select(
+    const books = await BookModel.find(/* { isAvailable: true } */).select(
       "title author isbn isAvailable"
     );
 
@@ -77,6 +78,7 @@ const getAllBooks = async (req, res) => {
   }
 };
 
+/* BORROW A BOOK */
 const borrowBook = async (req, res) => {
   try {
     const bookId = req.params.id;
@@ -115,6 +117,7 @@ const borrowBook = async (req, res) => {
   }
 };
 
+/* RETURN THE BORROWED BOOK */
 const returnBook = async (req, res) => {
   try {
     const bookId = req.params.id;

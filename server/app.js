@@ -52,15 +52,15 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 // test
-app.get("/test",(req,res) => { 
-  res.send("Server is working")
- })
+app.get("/test", (req, res) => {
+  res.send("Server is working");
+});
 
 // ---------------------------
 // API Route Handlers
 // ---------------------------
 app.use("/api/user", usersRouter);
-app.use("/api/books", booksRouter)
+app.use("/api/books", booksRouter);
 
 // ---------------------------
 // Serve Static Frontend Assets (Production)
